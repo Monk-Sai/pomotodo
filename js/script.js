@@ -6,6 +6,7 @@ let workTime = 25;
 let breakTime = 5;
 
 let seconds = "00"
+let pomodoroCount = 0;
 
 //Display
 window.onload = () => {
@@ -41,17 +42,25 @@ function start() {
         if(seconds === 0) {
             workMinutes = workMinutes - 1;
             if(workMinutes === -1){
-                if(breakCount % 2 === 0) {
+                if(pomodoroCount === 0) {
                     // start break
                     workMinutes = breakMinutes;
-                    breakCount++;
+                    pomodoroCount++;
+
+                    // change panel
+                    workTitle.classList.remove('active');
+                    breakTitle.classList.add('active');
+                }else if (pomodoroCount === 1) {
+                    // start a 10-minute break after the second Pomodoro
+                    workMinutes = 9; // 10 minutes minus 1
+                    pomodoroCount++;
 
                     // change panel
                     workTitle.classList.remove('active');
                     breakTitle.classList.add('active');
                 }else {
                     workMinutes = workTime;
-                    breakCount++;
+                    pomodoroCount = 0;
 
                     // change panel
                     breakTitle.classList.add('active');

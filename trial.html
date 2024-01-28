@@ -1,116 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .active {
-      color: red; /* Add your styling for the active class */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/d8b7ea8510.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <div id="work">Work</div>
-  <div id="Break">Break</div>
-  <div id="minutes"></div>
-  <div id="seconds"></div>
-  <button id="start" onclick="start()">Start</button>
-  <button id="reset" onclick="reset()" style="display: none;">Reset</button>
+    
+<header>
+    <section class="times-header">
+        <div class="header-col-1">
+            <p>TimeStop</p>
+        </div>
+        <div class="header-col-2">
+            <a href="#"><p>More</p></a>
+            <a href="#"><p>Login</p></a>
+        </div>
+    </section>
+</header>
 
-  <script>
-    // variables
-    let workTitle = document.getElementById('work');
-    let breakTitle = document.getElementById('Break');
+<section class="fold-0">
+    <h1>TimeStop</h1>
+</section>
 
-    let workTime = 1;
-    let breakTime = 5;
+    <section class="timer-cal-container">
+        <div class="time-container">
 
-    let seconds = "00";
-    let breakCount = 0;
+            <div class="panel">
+                <p id="work">Work</p>
+                <p id="break">Break</p>
+            </div>
 
-    // Display
-    window.onload = () => {
-      document.getElementById('minutes').innerHTML = workTime;
-      document.getElementById('seconds').innerHTML = seconds;
+            <div class="timer">
+                <div class="circle">
+                    <div class="time">
+                        <p id="minutes"></p>
+                        <p>:</p>
+                        <p id="seconds"></p>
+                    </div>
+                </div>
+            </div>
 
-      workTitle.classList.add('active');
-    }
+            <div class="controls">
+                <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
 
-    // Start timer
-    function start() {
-      // Change buttons
-      document.getElementById('start').style.display = "none";
-      document.getElementById('reset').style.display = "block";
+                <a id="reset" href="https://monk-sai.github.io/Timestop/"><i class="fa-solid fa-arrow-rotate-right"></i></a>
+            </div>
+        </div>
+    </section>
 
-      // Change time
-      seconds = 59;
+    <section class="content-fold">
+        <h2>TimeStop | pomodoro </h2>
+    </section>
 
-      let workMinutes = workTime - 1;
-      let breakMinutes = breakTime - 1;
 
-      // Countdown
-      let timerFunction = () => {
-        // Change the display
+    <!-- script -->
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+
+    <script>
+        // variables
+let workTitle = document.getElementById('work');
+let breakTitle = document.getElementById('break');
+
+let workTime = 0;
+let breakTime = 5;
+
+let seconds = "00"
+let pomodoroCount = 0;
+
+//Display
+window.onload = () => {
+    document.getElementById('minutes').innerHTML = workTime;
+    document.getElementById('seconds').innerHTML = seconds;
+
+    workTitle.classList.add('active');
+}
+
+//start timer
+function start() {
+    //change button
+    document.getElementById('start').style.display = "none";
+    document.getElementById('reset').style.display = "block";
+
+    //change time
+    seconds = 3;
+
+    let workMinutes = workTime - 1;
+    let breakMinutes = breakTime - 1;
+
+    breakCount = 10;
+
+    //countdown
+    let timerFunction = () => {
+        //change the display
         document.getElementById('minutes').innerHTML = workMinutes;
         document.getElementById('seconds').innerHTML = seconds;
 
-        // Start
+        //start
         seconds = seconds - 1;
 
-        if (seconds === 0) {
-          workMinutes = workMinutes - 1;
+        if(seconds === 0) {
+            workMinutes = workMinutes - 1;
+            if(workMinutes === -1){
+                if(pomodoroCount === 0) {
+                    // start break
+                    workMinutes = breakMinutes;
+                    breakCount++;
 
-          if (workMinutes === -1) {
-            if (breakCount % 2 === 0) {
-              // Start break
-              workMinutes = breakMinutes;
-              breakCount++;
+                    // change panel
+                    workTitle.classList.remove('active');
+                    breakTitle.classList.add('active');
+                }else if (pomodoroCount === 1) {
+                    // start a 10-minute break after the second Pomodoro
+                    workMinutes = 9; // 10 minutes minus 1
+                    pomodoroCount++;
 
-              // Change panel
-              workTitle.classList.remove('active');
-              breakTitle.classList.add('active');
-            } else {
-              // Start work
-              workMinutes = workTime;
-              breakCount++;
+                    // change panel
+                    workTitle.classList.remove('active');
+                    breakTitle.classList.add('active');
+                }else {
+                    workMinutes = workTime;
+                    breakCount++;
 
-              // Change panel
-              breakTitle.classList.remove('active');
-              workTitle.classList.add('active');
+                    // change panel
+                    breakTitle.classList.add('active');
+                    workTitle.classList.remove('active');
+                }
             }
-          }
-
-          seconds = 59;
+            seconds = 59;
         }
-      }
-
-      // Start Countdown
-      let intervalId = setInterval(timerFunction, 1000);
-
-      // Store the intervalId in the window object
-      window.intervalId = intervalId;
     }
 
-    // Reset timer
-    function reset() {
-      // Change buttons
-      document.getElementById('start').style.display = "block";
-      document.getElementById('reset').style.display = "none";
-
-      // Clear the interval
-      clearInterval(window.intervalId);
-
-      // Reset break count
-      breakCount = 0;
-
-      // Reset display
-      document.getElementById('minutes').innerHTML = workTime;
-      document.getElementById('seconds').innerHTML = "00";
-
-      // Reset panel
-      breakTitle.classList.remove('active');
-      workTitle.classList.add('active');
-    }
-  </script>
+    // start Countdown
+    setInterval(timerFunction, 1000);
+}
+    </script>
 </body>
 </html>
