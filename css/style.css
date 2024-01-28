@@ -75,11 +75,12 @@ h3 {
     display: flex;
     justify-content: center;
     background-color: var(--color-primary);
-    padding: 4rem 0 0 0;
+    padding: 3rem 0 0 0;
 }
 
 .time-container {
     width: min(42.5rem, 100%);
+    height: 95vh;
     margin-inline: auto;
     padding-inline: 2rem;
     display: flex;
@@ -183,6 +184,24 @@ h3 {
 
 /* Mobile Display Screen */
 @media screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.25rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    .time-container {
+        width: min(42.5rem, 100%);
+        margin-inline: auto;
+        padding-inline: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+    }
     .timer {
         display: flex;
         justify-content: center;
