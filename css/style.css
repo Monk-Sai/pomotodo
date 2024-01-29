@@ -74,8 +74,11 @@ h3 {
 .fold-0 {
     display: flex;
     justify-content: center;
-    background-color: var(--color-primary);
+    background-color: var(--color-font);
     padding: 3rem 0 0 0;
+}
+.fold-0 h1 {
+    color: #510327;
 }
 
 .time-container {
