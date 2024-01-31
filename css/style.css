@@ -42,7 +42,10 @@
 }
 
 .timer-cal-container {
-    background-color: var(--color-primary);
+    background-image: url("../img/pomofocus-wall-1.jpg");
+    opacity: 1;
+    background-size: cover;
+    background-position: center;
 }
 
 body {
@@ -93,20 +96,25 @@ h3 {
 }
 
 .panel {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    font-size: 1.3rem;
+    justify-content: space-evenly;
     text-align: center;
-    width: 20rem;
+    width: 18rem;
     margin-block: 3rem;
     padding: 1rem;
     border-radius: 10rem;
     -webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow);
     box-shadow: 0px 0px 10px 2px var(--color-shadow);
+    background-color: rgb(255 255 255 / 50%);
+    text-shadow: 2px 3px 1px #29003c;
 }
 
 .panel p {
     opacity: 0.8;
     transition: 1s ease-in;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .panel p.active {
@@ -132,7 +140,7 @@ h3 {
     width: 22rem;
     height: 22rem;
     border-radius: 50%;
-    background-color: var(--color-secondary);
+    background-color: rgba(255, 255, 255, 0.45);
     position: relative;
 }
 
@@ -142,7 +150,7 @@ h3 {
     width: 95%;
     height: 95%;
     border-radius: 50%;
-    background-color: var(--color-primary);
+    background-color: transparent;
 }
 
 .time {
@@ -151,7 +159,11 @@ h3 {
     flex-direction: row;
 }
 .time p {
-    font-size: 5.5rem;
+    font-size: 5rem;
+    font-weight: 600;
+    font-family: monospace;
+    color: black;
+    text-shadow: 2px 2px 3px #bb2aff;;
 }
 .time p:nth-of-type(2) {
     position: relative;
@@ -161,19 +173,30 @@ h3 {
 
 .controls {
     margin: 3rem;
+    background-color: #29003c;
+    width: 20%;
+    border-radius: 25px;
+    padding: 10px 0;
+    box-shadow: 0px 0px 10px 3px #ffffff;
 }
 .controls button {
     border: none;
     color: #fefefe;
+    width: 100%;
     font-size: 2rem;
     background-color: transparent;
     cursor: pointer;
 }
 .controls #reset {
     display: none;
+    width: 100%;
+    justify-content: center;
 }
 .controls a {
     color: #fefefe;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
  /* Content Fold */
@@ -209,20 +232,20 @@ h3 {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 19rem;
-        height: 19rem;
+        width: 18rem;
+        height: 18rem;
         border-radius: 50%;
         -webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow);
-        box-shadow: 0px 0px 10px 2px var(--color-shadow);
+        box-shadow: 0px 0px 20px 9px var(--color-shadow);
     }
     .circle {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 18rem;
-        height: 18rem;
+        width: 17rem;
+        height: 17rem;
         border-radius: 50%;
-        background-color: var(--color-secondary);
+        background-color: rgba(255, 255, 255, 0.45);
         position: relative;
     }
 }
