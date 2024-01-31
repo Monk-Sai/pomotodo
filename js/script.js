@@ -20,7 +20,7 @@ window.onload = () => {
 function start() {
     //change button
     document.getElementById('start').style.display = "none";
-    document.getElementById('reset').style.display = "block";
+    document.getElementById('reset').style.display = "flex";
 
     //change time
     seconds = 59;
