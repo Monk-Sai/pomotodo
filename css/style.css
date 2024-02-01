@@ -118,6 +118,14 @@ h3 {
     font-weight: 600;
     cursor: pointer;
 }
+.panel button {
+    opacity: 0.8;
+    transition: 1s ease-in;
+    font-weight: 600;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+}
 
 .panel p.active {
     opacity: 1;

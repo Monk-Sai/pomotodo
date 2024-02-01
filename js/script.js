@@ -1,8 +1,9 @@
 // variables
 let workTitle = document.getElementById('work');
 let breakTitle = document.getElementById('break');
+let break2Title = document.getElementById('break2');
 
-let workTime = 25;
+let workTime = 1;
 let breakTime = 1;
 
 let seconds = "00"
@@ -52,12 +53,13 @@ function start() {
                     breakTitle.classList.add('active');
                 }else if (pomodoroCount === 1) {
                     // start a 10-minute break after the second Pomodoro
-                    workMinutes = 9; // 10 minutes minus 1
+                    workMinutes = 1; // 10 minutes minus 1
                     pomodoroCount++;
 
                     // change panel
                     workTitle.classList.remove('active');
-                    breakTitle.classList.add('active');
+                    breakTitle.classList.remove('active')
+                    break2Title.classList.add('active');
                 }else {
                     workMinutes = workTime;
                     pomodoroCount = 0;
