@@ -128,8 +128,8 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24rem;
-    height: 24rem;
+    width: 22rem;
+    height: 22rem;
     border-radius: 50%;
     -webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow);
     box-shadow: 0px 0px 10px 2px var(--color-shadow);
@@ -139,8 +139,8 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 22rem;
-    height: 22rem;
+    width: 21rem;
+    height: 21rem;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.45);
     position: relative;
@@ -161,7 +161,7 @@ h3 {
     flex-direction: row;
 }
 .time p {
-    font-size: 5rem;
+    font-size: 4.65rem;
     font-weight: 600;
     font-family: monospace;
     color: black;
@@ -175,8 +175,8 @@ h3 {
 
 .controls {
     margin: 3rem;
-    background-color: #29003c;
-    width: 20%;
+    background-color: #240035;
+    width: 25%;
     border-radius: 25px;
     padding: 10px 0;
     box-shadow: 0px 0px 10px 3px #ffffff;
