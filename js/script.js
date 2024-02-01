@@ -3,8 +3,8 @@ let workTitle = document.getElementById('work');
 let breakTitle = document.getElementById('break');
 let break2Title = document.getElementById('break2');
 
-let workTime = 1;
-let breakTime = 1;
+let workTime = 25;
+let breakTime = 5;
 
 let seconds = "00"
 let pomodoroCount = 0;
@@ -52,24 +52,43 @@ function start() {
                     workTitle.classList.remove('active');
                     breakTitle.classList.add('active');
                 }else if (pomodoroCount === 1) {
+                    // start second Pomodoro
+                    workMinutes = 25; // 25 minutes minus 1
+                    pomodoroCount++;
+
+                    // change panel
+                    workTitle.classList.add('active');
+                    breakTitle.classList.remove('active');
+                    break2Title.classList.remove('active');
+                }else if (pomodoroCount === 2) {
                     // start a 10-minute break after the second Pomodoro
-                    workMinutes = 1; // 10 minutes minus 1
+                    workMinutes = 10; // 10 minutes minus 1
                     pomodoroCount++;
 
                     // change panel
                     workTitle.classList.remove('active');
-                    breakTitle.classList.remove('active')
+                    breakTitle.classList.remove('active');
                     break2Title.classList.add('active');
-                }else {
+                }else if (pomodoroCount === 3) {
+                    // stop Pomodoro
+                    workMinutes = clearInterval(); 
+
+                    // change panel
+                    workTitle.classList.add('active');
+                    breakTitle.classList.remove('active');
+                    break2Title.classList.remove('active');
+                }
+                else {
                     workMinutes = workTime;
                     pomodoroCount = 0;
 
                     // change panel
                     breakTitle.classList.add('active');
                     workTitle.classList.remove('active');
+                    break2Title.classList.remove('active');
                 }
             }
-            seconds = 59;
+        seconds = 59;
         }
     }
 
