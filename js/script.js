@@ -6,10 +6,10 @@ let breakTitleTwo = document.getElementById('break2');
 
 let workTime = 25;
 let breakTime = 5;
-let breakTime2 = 10;
+let breakTime2 =10;
 
 
-let seconds = "00"
+let seconds = "00";
 let pomodoroCount = 0;
 
 //Display
@@ -18,8 +18,46 @@ window.onload = () => {
     document.getElementById('seconds').innerHTML = seconds;
 
     workTitle.classList.add('active');
-    breakTime.classList.remove('active');
-    breakTime2.classList.remove('active');
+    breakTitle.classList.remove('active');
+    breakTitleTwo.classList.remove('active');
+}
+
+// Handle clicks on specific elements to switch between sessions
+const workClick = document.getElementById('work'); // Assuming an element with ID "workClick"
+const breakClick = document.getElementById('break'); // Assuming an element with ID "breakClick"
+const break2Click = document.getElementById('break2'); // Assuming an element with ID "break2Click"
+
+workClick.addEventListener('click', () => {
+    document.getElementById('minutes').innerHTML = workTime;
+    document.getElementById('seconds').innerHTML = seconds;
+
+    workTitle.classList.add('active');
+    breakTitle.classList.remove('active');
+    breakTitleTwo.classList.remove('active');
+});
+
+breakClick.addEventListener('click', () => {
+    document.getElementById('minutes').innerHTML = breakTime;
+    document.getElementById('seconds').innerHTML = seconds;
+
+    workTitle.classList.remove('active');
+    breakTitle.classList.add('active');
+    breakTitleTwo.classList.remove('active');
+});
+
+break2Click.addEventListener('click', () => {
+    document.getElementById('minutes').innerHTML = breakTime2;
+    document.getElementById('seconds').innerHTML = seconds;
+
+    workTitle.classList.remove('active');
+    breakTitle.classList.remove('active');
+    breakTitleTwo.classList.add('active');
+});
+
+//Go to Break Tab
+function break1() {
+    //change tab
+    document.breakTitle.classList.add('active');
 }
 
 //start timer
@@ -85,7 +123,7 @@ function start() {
                     breakTitleTwo.classList.remove('active');
                 }
             }
-            seconds = 59;
+        seconds = 59;
         }
     }
     // start Countdown
