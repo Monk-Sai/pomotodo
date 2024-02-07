@@ -128,9 +128,9 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 22rem;
-    height: 22rem;
-    border-radius: 50%;
+    width: 21rem;
+    height: 16rem;
+    border-radius: 25% 0;
     -webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow);
     box-shadow: 0px 0px 10px 2px var(--color-shadow);
 }
@@ -139,9 +139,9 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 21rem;
-    height: 21rem;
-    border-radius: 50%;
+    width: 19rem;
+    height: 14rem;
+    border-radius: 25% 0;
     background-color: rgba(255, 255, 255, 0.45);
     position: relative;
 }
@@ -161,7 +161,7 @@ h3 {
     flex-direction: row;
 }
 .time p {
-    font-size: 4.65rem;
+    font-size: 4.5rem;
     font-weight: 600;
     font-family: monospace;
     color: black;
@@ -235,8 +235,8 @@ h3 {
         justify-content: center;
         align-items: center;
         width: 18rem;
-        height: 18rem;
-        border-radius: 50%;
+        height: 14rem;
+        border-radius: 25% 0;
         -webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow);
         box-shadow: 0px 0px 20px 9px var(--color-shadow);
     }
@@ -251,8 +251,8 @@ h3 {
         justify-content: center;
         align-items: center;
         width: 17rem;
-        height: 17rem;
-        border-radius: 50%;
+        height: 13rem;
+        border-radius: 25% 0;
         background-color: rgba(255, 255, 255, 0.45);
         position: relative;
     }
