@@ -57,8 +57,17 @@ body {
 
 p,
 i,
-h1 {
-    color: var(--color-font)
+h1,
+ol,
+ul,
+li {
+    color: #0d0013;
+    padding: 1rem 0;
+}
+p,
+ol,
+li {
+    font-size: 1rem;
 }
 i {
     font-size: 3rem;
@@ -83,6 +92,7 @@ h3 {
 }
 .fold-0 h1 {
     color: #510327;
+    display: flex;
 }
 
 .time-container {
@@ -116,6 +126,9 @@ h3 {
     transition: 0.45s ease-in;
     font-weight: 600;
     cursor: pointer;
+    color: #fefefe;
+    font-size: 1.3rem;
+    padding: 0;
 }
 
 .panel p.active {
@@ -231,8 +244,13 @@ h3 {
 .content-fold {
     height: 100%;
     display: flex;
+    flex-direction: column;
     margin: 2rem 0 2rem 0;
     padding: 0 1rem 0 1rem;
+}
+.content-fold h1 {
+    display: flex;
+    flex-direction: column;
 }
 
 

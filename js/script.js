@@ -13,6 +13,9 @@ let pomodoroCount = 0;
 
 let remainingSeconds;
 
+// Audio element for the alarm
+let alarmSound = new Audio('../sounds/neraton.mp3');
+
 //Display
 window.onload = () => {
     document.getElementById('minutes').innerHTML = workTime;
@@ -88,6 +91,9 @@ function start() {
                     workTitle.classList.remove('active');
                     breakTitle.classList.add('active');
                     breakTitleTwo.classList.remove('active');
+
+                    alarmSound.play();
+
                 }else if (pomodoroCount === 1) {
                     // start a 25-minute work after the first Break
                     workMinutes = 25; 
