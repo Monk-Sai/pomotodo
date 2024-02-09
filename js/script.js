@@ -8,9 +8,10 @@ let workTime = 25;
 let breakTime = 5;
 let breakTime2 =10;
 
-
 let seconds = "00";
 let pomodoroCount = 0;
+
+let remainingSeconds;
 
 //Display
 window.onload = () => {
@@ -23,9 +24,9 @@ window.onload = () => {
 }
 
 // Handle clicks on specific elements to switch between sessions
-const workClick = document.getElementById('work'); // Assuming an element with ID "workClick"
-const breakClick = document.getElementById('break'); // Assuming an element with ID "breakClick"
-const break2Click = document.getElementById('break2'); // Assuming an element with ID "break2Click"
+const workClick = document.getElementById('work'); 
+const breakClick = document.getElementById('break'); 
+const break2Click = document.getElementById('break2'); 
 
 workClick.addEventListener('click', () => {
     document.getElementById('minutes').innerHTML = workTime;
@@ -54,20 +55,14 @@ break2Click.addEventListener('click', () => {
     breakTitleTwo.classList.add('active');
 });
 
-//Go to Break Tab
-function break1() {
-    //change tab
-    document.breakTitle.classList.add('active');
-}
-
 //start timer
 function start() {
     //change button
     document.getElementById('start').style.display = "none";
-    document.getElementById('reset').style.display = "flex";
+    document.getElementById('pause').style.display = "flex";
 
-    //change time
-    seconds = 59;
+    // Use the stored remaining seconds or set it to 59 if not set
+    seconds = remainingSeconds !== undefined ? remainingSeconds : 59;
 
     let workMinutes = workTime - 1;
     let breakMinutes = breakTime - 1;
@@ -128,4 +123,18 @@ function start() {
     }
     // start Countdown
     timerInterval = setInterval(timerFunction, 1000);
+}
+
+// Pause timer function
+function pause() {
+    clearInterval(timerInterval);
+
+     // Store the remaining seconds
+    remainingSeconds = seconds;
+
+    document.getElementById('start').style.display = "none";
+    document.getElementById('pause').style.display = "flex";
+
+    document.getElementById('start').style.display = "flex";
+    document.getElementById('pause').style.display = "none";
 }

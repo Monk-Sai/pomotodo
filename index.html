@@ -34,8 +34,8 @@
         
         <div class="panel">
             <p id="work">Work</p>
-            <p id="break" onclick="break1()">Break</p>
-            <p id="break2" onclick="break2()">Break 2</button></p>
+            <p id="break">Break</p>
+            <p id="break2">Break 2</button></p>
         </div>
         
         <div class="timer">
@@ -49,10 +49,15 @@
         </div>
         
         <div class="controls">
-            <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
             
-            <a id="reset" href="https://monk-sai.github.io/Timestop/"><i class="fa-solid fa-arrow-rotate-right"></i></a>
-        </div>
+            <div class="start-pause-control">
+                <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
+                <button id="pause" onclick="pause()"><i class="fa-solid fa-circle-pause"></i></button>
+            </div>
+
+            <div class="reset-control">
+                <a href="https://monk-sai.github.io/Timestop/"><button id="reset"><i class="fa-solid fa-arrow-rotate-right"></i></button></a>
+            </div>
     </div>
 </section>
 
