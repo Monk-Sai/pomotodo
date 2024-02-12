@@ -73,6 +73,7 @@ p,
 ol,
 li {
     font-size: 1rem;
+    width: 65%;
 }
 i {
     font-size: 3rem;
@@ -82,6 +83,7 @@ h1 {
 }
 h2 {
     font-size: 1.5rem;
+    width: 65%;
 }
 h3 {
     font-size: 1.25rem;
@@ -99,6 +101,7 @@ h3 {
 .fold-0 h1 {
     color: #510327;
     display: flex;
+    width: 65%;
 }
 
 .time-container {
@@ -249,10 +252,12 @@ h3 {
  /* Content Fold */
 .content-fold {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin: 2rem 0 2rem 0;
     padding: 0 1rem 0 1rem;
+    align-items: center;
 }
 .content-fold h1 {
     display: flex;
@@ -264,12 +269,25 @@ h3 {
 @media screen and (max-width: 600px) {
     h1 {
         font-size: 1.5rem;
+        width: 100%;
     }
     h2 {
         font-size: 1.25rem;
+        width: 100%;
     }
     h3 {
         font-size: 1rem;
+    }
+    .fold-0 h1 {
+        color: #510327;
+        display: flex;
+        width: 100%;
+    }
+    p,
+    ol,
+    li {
+    font-size: 1rem;
+    width: 100%;
     }
     .time-container {
         width: min(42.5rem, 100%);
