@@ -6,7 +6,7 @@ let breakTitleTwo = document.getElementById('break2');
 
 let workTime = 25;
 let breakTime = 5;
-let breakTime2 =10;
+let breakTime2 = 10;
 
 let seconds = "00";
 let pomodoroCount = 0;
@@ -14,7 +14,7 @@ let pomodoroCount = 0;
 let remainingSeconds;
 
 // Audio element for the alarm
-let alarmSound = new Audio('../sounds/neraton.mp3');
+let alarmSound = new Audio('../sounds/alarm-tone-1.mp3');
 
 //Display
 window.onload = () => {
@@ -32,31 +32,53 @@ const breakClick = document.getElementById('break');
 const break2Click = document.getElementById('break2'); 
 
 workClick.addEventListener('click', () => {
+    
     document.getElementById('minutes').innerHTML = workTime;
-    document.getElementById('seconds').innerHTML = seconds;
+    document.getElementById('seconds').innerHTML = "00";
 
     workTitle.classList.add('active');
     breakTitle.classList.remove('active');
     breakTitleTwo.classList.remove('active');
+
+    // Change the button to play
+    document.getElementById('start').style.display = "flex";
+    document.getElementById('pause').style.display = "none";
+
+    resetTimer();
 });
 
 breakClick.addEventListener('click', () => {
+    
     document.getElementById('minutes').innerHTML = breakTime;
-    document.getElementById('seconds').innerHTML = seconds;
+    document.getElementById('seconds').innerHTML = "00";
 
     workTitle.classList.remove('active');
     breakTitle.classList.add('active');
     breakTitleTwo.classList.remove('active');
+
+    // Change the button to play
+    document.getElementById('start').style.display = "flex";
+    document.getElementById('pause').style.display = "none";
+
+    resetTimer();
 });
 
 break2Click.addEventListener('click', () => {
+    
     document.getElementById('minutes').innerHTML = breakTime2;
-    document.getElementById('seconds').innerHTML = seconds;
+    document.getElementById('seconds').innerHTML = "00";
 
     workTitle.classList.remove('active');
     breakTitle.classList.remove('active');
     breakTitleTwo.classList.add('active');
+
+    // Change the button to play
+    document.getElementById('start').style.display = "flex";
+    document.getElementById('pause').style.display = "none";
+
+    resetTimer();
 });
+
 
 //start timer
 function start() {
@@ -70,6 +92,17 @@ function start() {
     let workMinutes = workTime - 1;
     let breakMinutes = breakTime - 1;
 
+    // Determine the active element and set initial values accordingly
+    if (workTitle.classList.contains('active')) {
+        workMinutes = workTime - 1;
+    } else if (breakTitle.classList.contains('active')) {
+        workMinutes = breakTime - 1;
+    } else if (breakTitleTwo.classList.contains('active')) {
+        workMinutes = breakTime2 - 1;
+    }
+
+    let newActiveElement = detectActiveElement();
+
     //countdown
     let timerFunction = () => {
         //change the display
@@ -82,6 +115,12 @@ function start() {
         if(seconds === 0) {
             workMinutes = workMinutes - 1;
             if(workMinutes === -1){
+                // Check for changes in the active element
+                if (newActiveElement !== null) {
+                    // Play sound and show alert when changing from one session to another
+                    alarmSound.play();
+                    alert(`Switching to ${newActiveElement} Session`);
+                }
                 if(pomodoroCount === 0) {
                     // start a 5-minute break after the first Pomodoro
                     workMinutes = breakMinutes;
@@ -92,8 +131,6 @@ function start() {
                     breakTitle.classList.add('active');
                     breakTitleTwo.classList.remove('active');
 
-                    alarmSound.play();
-
                 }else if (pomodoroCount === 1) {
                     // start a 25-minute work after the first Break
                     workMinutes = 25; 
@@ -103,9 +140,10 @@ function start() {
                     workTitle.classList.add('active');
                     breakTitle.classList.remove('active');
                     breakTitleTwo.classList.remove('active');
+
                 }else if (pomodoroCount === 2) {
                     // start a 10-minute break after the second Pomodoro
-                    workMinutes = 10; 
+                    workMinutes = 10;
                     pomodoroCount++;
 
                     // change panel
@@ -115,7 +153,7 @@ function start() {
                 }
                 else if (pomodoroCount === 3) {
 
-                    workMinutes = 25;
+                    workMinutes = 2;
                     clearInterval(timerInterval); // Stop the timer using the stored ID
 
                     // change panel
@@ -131,6 +169,19 @@ function start() {
     timerInterval = setInterval(timerFunction, 1000);
 }
 
+// Function to detect the currently active element
+function detectActiveElement() {
+    if (workTitle.classList.contains('active')) {
+        return "Work";
+    } else if (breakTitle.classList.contains('active')) {
+        return "Break";
+    } else if (breakTitleTwo.classList.contains('active')) {
+        return "Break2";
+    } else {
+        return null;
+    }
+}
+
 // Pause timer function
 function pause() {
     clearInterval(timerInterval);
@@ -143,4 +194,13 @@ function pause() {
 
     document.getElementById('start').style.display = "flex";
     document.getElementById('pause').style.display = "none";
+}
+
+// Function to reset the timer
+function resetTimer() {
+    // Clear the existing timer interval
+    clearInterval(timerInterval);
+
+    // Reset remaining seconds
+    remainingSeconds = seconds;
 }
