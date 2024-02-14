@@ -82,12 +82,16 @@ break2Click.addEventListener('click', () => {
 
 //start timer
 function start() {
+
+    // Clear the remainingSeconds when starting the timer
+    remainingSeconds = undefined;
+
     //change button
     document.getElementById('start').style.display = "none";
     document.getElementById('pause').style.display = "flex";
 
     // Use the stored remaining seconds or set it to 59 if not set
-    seconds = remainingSeconds !== undefined ? remainingSeconds : 59;
+    seconds = (remainingSeconds !== undefined) ? remainingSeconds : 59;
 
     let workMinutes = workTime - 1;
     let breakMinutes = breakTime - 1;
@@ -194,6 +198,11 @@ function pause() {
 
     document.getElementById('start').style.display = "flex";
     document.getElementById('pause').style.display = "none";
+}
+
+// Playlist function
+function playlist() {
+    
 }
 
 // Function to reset the timer

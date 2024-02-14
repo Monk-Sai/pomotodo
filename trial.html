@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Pomodoro Way To Complete Your Tasks</title>
     <link rel="stylesheet" href="css/style.css">
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +21,7 @@
 <header>
     <section class="times-header">
         <div class="header-col-1">
-            <p>TimeStop</p>
+            <p>PomoFocus</p>
         </div>
         <div class="header-col-2">
             <a href="#"><p>More</p></a>
@@ -29,123 +30,81 @@
     </section>
 </header>
 
-<section class="fold-0">
-</section>
-
-    <section class="timer-cal-container">
-        <div class="time-container">
-
-            <div class="panel">
-                <p id="work">Work</p>
-                <p id="break">Break</p>
-            </div>
-
-            <div class="timer">
-                <div class="circle">
-                    <div class="time">
-                        <p id="minutes"></p>
-                        <p>:</p>
-                        <p id="seconds"></p>
-                    </div>
+<section class="timer-cal-container">
+    <div class="time-container">
+        
+        <div class="panel">
+            <p id="work">Work</p>
+            <p id="break">Break</p>
+            <p id="break2">Break 2</button></p>
+        </div>
+        
+        <div class="timer">
+            <div class="circle">
+                <div class="time">
+                    <p id="minutes"></p>
+                    <p>:</p>
+                    <p id="seconds"></p>
                 </div>
             </div>
-
-            <div class="controls">
-                <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
-
-                <a id="reset" href="https://monk-sai.github.io/Timestop/"><i class="fa-solid fa-arrow-rotate-right"></i></a>
-            </div>
         </div>
-    </section>
+        
+        <div class="controls">
+            
+            <div class="start-pause-control">
+                <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
+                <button id="pause" onclick="pause()"><i class="fa-solid fa-circle-pause"></i></button>
+            </div>
 
-    <section class="content-fold">
-        <h2>TimeStop | pomodoro </h2>
-    </section>
+            <div class="reset-control">
+                <a href="https://monk-sai.github.io/Timestop/"><button id="reset"><i class="fa-solid fa-arrow-rotate-right"></i></button></a>
+            </div>
+
+    </div>
+
+        <div class="pane-control">
+
+            <div class="carousel-playlist">
+                <button id="reset" onclick="playlist()">Playlist<i class="fa-solid fa-caret-down"></i></button>
+            </div>
+            <div class="carousel-checklist">
+                <button id="reset" onclick="checklist()">Checklist<i class="fa-solid fa-caret-down"></i></button>
+            </div>
+
+        </div>
+
+</section>
+
+<section class="fold-0">
+    <h1>Conquer Your Distractions and Boost Productivity with the Pomodoro Technique</h1>
+</section>
+<section class="content-fold">
+    <h2>What is the Pomodoro Technique?</h2>
+    <p>The Pomodoro Technique is a time management method that involves working in focused 25-minute intervals ("Pomodoros") separated by short breaks. Developed by Francesco Cirillo in the late 1980s, this technique has gained widespread popularity due to its simplicity and effectiveness in improving focus, reducing procrastination, and increasing overall productivity.</p>
+    <br>
+    <h2>How Does the Pomodoro Technique Work?</h2>
+    <p>Here's a breakdown of the Pomodoro Technique's essential steps:
+        <ol>
+        <li>Choose a task: Identify a specific task you want to work on.</li>
+        <li>Set a timer for 25 minutes: This is your "Pomodoro."</li>
+        <li>Work on the task: Focus solely on the chosen task until the timer rings.</li>
+        <li>Take a short break: Stand up, stretch, grab a drink, or do something relaxing for 5 minutes.</li>
+        <li>Repeat steps 2-4: After four Pomodoros, take a longer break (20-30 minutes).</li>
+        </ol>
+    </p>
+    <h2>Why Use the Pomodoro Technique?</h2>
+    <p>Here are some key benefits of using the Pomodoro Technique:</p>
+    <p><strong>Increased focus:</strong> Short work intervals with defined breaks help maintain concentration and minimize distractions.</p>
+    <p><strong>Reduced procrastination:</strong> Knowing you only have 25 minutes to work can motivate you to start and avoid delaying tasks.</p>
+    <p><strong>Improved productivity:</strong> By tackling tasks in focused bursts, you can accomplish more in less time.</p>
+    <p><strong>Enhanced time management:</strong> The technique encourages regular breaks, preventing burnout and improving overall time awareness.</p>
+    <p><strong>Reduced stress:</strong> Knowing you have defined work and break periods can alleviate stress and anxiety about deadlines.</p>
+
+    <p><strong>Ready to unleash your productivity potential? Try our Pomodoro timer today!</strong></p>
+</section>
 
 
-    <!-- script -->
-    <script src="js/script.js"></script>
-</body>
-</html>
-
-
-    <script>
-        // variables
-let workTitle = document.getElementById('work');
-let breakTitle = document.getElementById('break');
-
-let workTime = 0;
-let breakTime = 5;
-
-let seconds = "00"
-let pomodoroCount = 0;
-
-//Display
-window.onload = () => {
-    document.getElementById('minutes').innerHTML = workTime;
-    document.getElementById('seconds').innerHTML = seconds;
-
-    workTitle.classList.add('active');
-}
-
-//start timer
-function start() {
-    //change button
-    document.getElementById('start').style.display = "none";
-    document.getElementById('reset').style.display = "block";
-
-    //change time
-    seconds = 3;
-
-    let workMinutes = workTime - 1;
-    let breakMinutes = breakTime - 1;
-
-    breakCount = 10;
-
-    //countdown
-    let timerFunction = () => {
-        //change the display
-        document.getElementById('minutes').innerHTML = workMinutes;
-        document.getElementById('seconds').innerHTML = seconds;
-
-        //start
-        seconds = seconds - 1;
-
-        if(seconds === 0) {
-            workMinutes = workMinutes - 1;
-            if(workMinutes === -1){
-                if(pomodoroCount === 0) {
-                    // start break
-                    workMinutes = breakMinutes;
-                    breakCount++;
-
-                    // change panel
-                    workTitle.classList.remove('active');
-                    breakTitle.classList.add('active');
-                }else if (pomodoroCount === 1) {
-                    // start a 10-minute break after the second Pomodoro
-                    workMinutes = 9; // 10 minutes minus 1
-                    pomodoroCount++;
-
-                    // change panel
-                    workTitle.classList.remove('active');
-                    breakTitle.classList.add('active');
-                }else {
-                    workMinutes = workTime;
-                    breakCount++;
-
-                    // change panel
-                    breakTitle.classList.add('active');
-                    workTitle.classList.remove('active');
-                }
-            }
-            seconds = 59;
-        }
-    }
-
-    // start Countdown
-    setInterval(timerFunction, 1000);
-}
-    </script>
+<!-- script -->
+<script src="js/script.js"></script>
 </body>
 </html>
