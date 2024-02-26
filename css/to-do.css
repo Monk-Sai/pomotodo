@@ -116,10 +116,10 @@ ul li span:hover {
     }
     .todo-app {
         width: 100%;
-        height: 325px;
-        max-width: 540px;
+        height: auto;
         background: #fff;
-        padding: 40px 30px 70px;
+        padding: 40px 30px 30px;
         border-radius: 15px;
+        margin: 0 0 0 0;
     }
 }
