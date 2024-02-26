@@ -306,6 +306,15 @@ h3 {
     margin: 0 120% 180% 0;
 }
 
+#playlistFrame {
+    border: none;
+    display: flex;
+    height: 400px;
+    width: fit-content;
+    z-index: 90;
+    margin: 0 0 180% 120%;
+}
+
 /* Mobile Display Screen */
 @media screen and (max-width: 600px) {
     h1 {

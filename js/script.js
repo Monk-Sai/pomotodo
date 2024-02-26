@@ -200,11 +200,6 @@ function pause() {
     document.getElementById('pause').style.display = "none";
 }
 
-// Playlist function
-function playlist() {
-    
-}
-
 // Function to reset the timer
 function resetTimer() {
     // Clear the existing timer interval
@@ -214,7 +209,42 @@ function resetTimer() {
     remainingSeconds = seconds;
 }
 
-// to do list
+// Playlist function
+function playlist() {
+    const iframe = document.getElementById("playlistFrame");
+    iframe.src = "play-list.html";
+    iframe.style.display = "flex"; // Show the iframe
+
+    const button = document.getElementById('playlist');
+    button.style.display = "none";
+
+    // Create a close button
+    const closeButton = document.createElement('button');
+    closeButton.addEventListener('click', closeToDoListPopup);
+
+    // Append the close button to the document body
+    document.body.appendChild(closeButton);
+
+    // Function to close the popup
+    function closeToDoListPopup() {
+        iframe.style.display = "none";
+        button.style.display = "flex"; // Show the button again
+        closeButton.remove(); // Remove the close button
+    }
+
+    // Add event listener to close the popup when clicked outside
+    function clickOutsidePopup(event) {
+        if (!iframe.contains(event.target) && event.target !== closeButton) {
+            closeToDoListPopup();
+            document.removeEventListener('mousedown', clickOutsidePopup);
+        }
+    }
+
+    // Add the event listener to close the popup when clicked outside
+    document.addEventListener('mousedown', clickOutsidePopup);
+}
+
+// To do list
 function openToDoList() {
     const iframe = document.getElementById("todolistFrame");
     iframe.src = "to-do-list.html";
