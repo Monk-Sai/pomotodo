@@ -59,18 +59,20 @@
                 <a href="https://monk-sai.github.io/Timestop/"><button id="reset"><i class="fa-solid fa-arrow-rotate-right"></i></button></a>
             </div>
 
-    </div>
+        </div>
 
         <div class="pane-control">
 
             <div class="carousel-playlist">
-                <button id="reset" onclick="playlist()">Playlist<i class="fa-solid fa-caret-down"></i></button></a>
+                <button id="reset" onclick="playlist()">Playlist<i class="fa-solid fa-caret-up"></i></button></a>
             </div>
             <div class="carousel-checklist">
-                <button id="reset" onclick="checklist()">Checklist<i class="fa-solid fa-caret-down"></i></button></a>
+                <button id="checklist" onclick="openToDoList()" style="display: flex;">Checklist<i class="fa-solid fa-caret-up"></i></button>  
+                <iframe id="todolistFrame" src="" style="display: none;"></iframe>
             </div>
 
         </div>
+    </div>
 
 </section>
 

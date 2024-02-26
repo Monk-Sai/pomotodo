@@ -213,3 +213,39 @@ function resetTimer() {
     // Reset remaining seconds
     remainingSeconds = seconds;
 }
+
+// to do list
+function openToDoList() {
+    const iframe = document.getElementById("todolistFrame");
+    iframe.src = "to-do-list.html";
+    iframe.style.display = "flex"; // Show the iframe
+
+    const button = document.getElementById('checklist');
+    button.style.display = "none";
+
+    // Create a close button
+    const closeButton = document.createElement('button');
+    closeButton.addEventListener('click', closeToDoListPopup);
+
+    // Append the close button to the document body
+    document.body.appendChild(closeButton);
+
+    // Function to close the popup
+    function closeToDoListPopup() {
+        iframe.style.display = "none";
+        button.style.display = "flex"; // Show the button again
+        closeButton.remove(); // Remove the close button
+    }
+
+    // Add event listener to close the popup when clicked outside
+    function clickOutsidePopup(event) {
+        if (!iframe.contains(event.target) && event.target !== closeButton) {
+            closeToDoListPopup();
+            document.removeEventListener('mousedown', clickOutsidePopup);
+        }
+    }
+
+    // Add the event listener to close the popup when clicked outside
+    document.addEventListener('mousedown', clickOutsidePopup);
+}
+
