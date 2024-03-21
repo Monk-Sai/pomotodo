@@ -13,6 +13,20 @@ let pomodoroCount = 0;
 
 let remainingSeconds;
 
+// Pause timer function
+function pause() {
+    clearInterval(timerInterval);
+
+     // Store the remaining seconds
+    remainingSeconds = seconds;
+
+    document.getElementById('start').style.display = "none";
+    document.getElementById('pause').style.display = "flex";
+
+    document.getElementById('start').style.display = "flex";
+    document.getElementById('pause').style.display = "none";
+}
+
 // Audio element for the alarm
 let alarmSound = new Audio('../sounds/alarm-tone-1.mp3');
 
@@ -83,15 +97,12 @@ break2Click.addEventListener('click', () => {
 //start timer
 function start() {
 
-    // Clear the remainingSeconds when starting the timer
-    remainingSeconds = undefined;
-
     //change button
     document.getElementById('start').style.display = "none";
     document.getElementById('pause').style.display = "flex";
 
     // Use the stored remaining seconds or set it to 59 if not set
-    seconds = (remainingSeconds !== undefined) ? remainingSeconds : 59;
+    seconds = remainingSeconds || 59; // Use remainingSeconds if set, otherwise default to 59
 
     let workMinutes = workTime - 1;
     let breakMinutes = breakTime - 1;
@@ -173,6 +184,7 @@ function start() {
     timerInterval = setInterval(timerFunction, 1000);
 }
 
+
 // Function to detect the currently active element
 function detectActiveElement() {
     if (workTitle.classList.contains('active')) {
@@ -186,28 +198,11 @@ function detectActiveElement() {
     }
 }
 
-// Pause timer function
-function pause() {
-    clearInterval(timerInterval);
-
-     // Store the remaining seconds
-    remainingSeconds = seconds;
-
-    document.getElementById('start').style.display = "none";
-    document.getElementById('pause').style.display = "flex";
-
-    document.getElementById('start').style.display = "flex";
-    document.getElementById('pause').style.display = "none";
-}
-
 // Function to reset the timer
 function resetTimer() {
-    // Clear the existing timer interval
     clearInterval(timerInterval);
-
-    // Reset remaining seconds
-    remainingSeconds = seconds;
-}
+    remainingSeconds = undefined; // Reset remainingSeconds
+  }
 
 // Playlist function
 function playlist() {
