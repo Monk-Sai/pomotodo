@@ -4,6 +4,12 @@
     font-family: system-ui, sans-serif;
     box-sizing: border-box;
 }
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #9588a8;
+}
 
 .container {
     width: 100%;
@@ -14,10 +20,8 @@
 .todo-app {
     width: 100%;
     max-width: 540px;
-    background: #fff;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
-    border-radius: 15px;
+    background: #fff0;
+    padding: 40px 0;
 }
 .todo-app h2 {
     color: #000;
@@ -51,7 +55,7 @@ button {
     border: none;
     outline: none;
     padding: 16px 50px;
-    background: #a932ff;
+    background: #240035;
     color: #F4E5DB;
     font-size: 16px;
     cursor: pointer;

@@ -15,8 +15,10 @@
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/d8b7ea8510.js" crossorigin="anonymous"></script>
     <style>
-        #iframeSection {
-  /* Add any styling for the section if needed */
+        #frameLoadSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 }
 
 #iframeSection iframe {
@@ -100,6 +102,10 @@
 <script>
     var section = document.getElementById('frameLoadSection');
     var iframe = document.getElementById('todolistFrame');
+    section.appendChild(iframe);
+
+    var section = document.getElementById('frameLoadSection');
+    var iframe = document.getElementById('playlistFrame');
     section.appendChild(iframe);
 </script>
 </body>
