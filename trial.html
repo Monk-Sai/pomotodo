@@ -14,6 +14,15 @@
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/d8b7ea8510.js" crossorigin="anonymous"></script>
+    <style>
+        #iframeSection {
+  /* Add any styling for the section if needed */
+}
+
+#iframeSection iframe {
+  display: block; /* Make the iframe visible */
+}
+    </style>
 </head>
 
 <body>
@@ -77,36 +86,21 @@
     </div>
 </section>
 
+<section id="frameLoadSection">
+
+</section>
+
 <section class="fold-0">
     <h1>Conquer Your Distractions and Boost Productivity with the Pomodoro Technique</h1>
-</section>
-<section class="content-fold">
-    <h2>What is the Pomodoro Technique?</h2>
-    <p>The Pomodoro Technique is a time management method that involves working in focused 25-minute intervals ("Pomodoros") separated by short breaks. Developed by Francesco Cirillo in the late 1980s, this technique has gained widespread popularity due to its simplicity and effectiveness in improving focus, reducing procrastination, and increasing overall productivity.</p>
-    <br>
-    <h2>How Does the Pomodoro Technique Work?</h2>
-    <p>Here's a breakdown of the Pomodoro Technique's essential steps:
-        <ol>
-        <li>Choose a task: Identify a specific task you want to work on.</li>
-        <li>Set a timer for 25 minutes: This is your "Pomodoro."</li>
-        <li>Work on the task: Focus solely on the chosen task until the timer rings.</li>
-        <li>Take a short break: Stand up, stretch, grab a drink, or do something relaxing for 5 minutes.</li>
-        <li>Repeat steps 2-4: After four Pomodoros, take a longer break (20-30 minutes).</li>
-        </ol>
-    </p>
-    <h2>Why Use the Pomodoro Technique?</h2>
-    <p>Here are some key benefits of using the Pomodoro Technique:</p>
-    <p><strong>Increased focus:</strong> Short work intervals with defined breaks help maintain concentration and minimize distractions.</p>
-    <p><strong>Reduced procrastination:</strong> Knowing you only have 25 minutes to work can motivate you to start and avoid delaying tasks.</p>
-    <p><strong>Improved productivity:</strong> By tackling tasks in focused bursts, you can accomplish more in less time.</p>
-    <p><strong>Enhanced time management:</strong> The technique encourages regular breaks, preventing burnout and improving overall time awareness.</p>
-    <p><strong>Reduced stress:</strong> Knowing you have defined work and break periods can alleviate stress and anxiety about deadlines.</p>
-
-    <p><strong>Ready to unleash your productivity potential? Try our Pomodoro timer today!</strong></p>
 </section>
 
 
 <!-- script -->
 <script src="js/script.js"></script>
+<script>
+    var section = document.getElementById('frameLoadSection');
+    var iframe = document.getElementById('todolistFrame');
+    section.appendChild(iframe);
+</script>
 </body>
 </html>
