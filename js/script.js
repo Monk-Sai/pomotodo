@@ -210,9 +210,6 @@ function playlist() {
     iframe.src = "play-list.html";
     iframe.style.display = "flex"; // Show the iframe
 
-    const button = document.getElementById('playlist');
-    button.style.display = "none";
-
     // Create a close button
     const closeButton = document.createElement('button');
     closeButton.addEventListener('click', closeToDoListPopup);
@@ -245,9 +242,6 @@ function openToDoList() {
     iframe.src = "to-do-list.html";
     iframe.style.display = "flex"; // Show the iframe
 
-    const button = document.getElementById('checklist');
-    button.style.display = "none";
-
     // Create a close button
     const closeButton = document.createElement('button');
     closeButton.addEventListener('click', closeToDoListPopup);
@@ -274,3 +268,11 @@ function openToDoList() {
     document.addEventListener('mousedown', clickOutsidePopup);
 }
 
+// Function idems div below
+    var section = document.getElementById('frameLoadSection');
+    var iframe = document.getElementById('todolistFrame');
+    section.appendChild(iframe);
+
+    var section = document.getElementById('frameLoadSection');
+    var iframe = document.getElementById('playlistFrame');
+    section.appendChild(iframe);
