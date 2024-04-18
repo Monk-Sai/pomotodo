@@ -11,6 +11,11 @@ body {
     background-color: #9588a8;
 }
 
+#list-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .container {
     width: 100%;
     min-height: 100vh;
@@ -21,12 +26,13 @@ body {
     width: 100%;
     max-width: 540px;
     background: #fff0;
-    padding: 40px 0;
+    padding: 20px 25px 25px;
 }
 .todo-app h2 {
     color: #000;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 }
 .todo-app h2 img {
@@ -121,8 +127,8 @@ ul li span:hover {
     .todo-app {
         width: 100%;
         height: auto;
-        background: #fff;
-        padding: 40px 30px 30px;
+        background: #fff0;
+        padding: 20px 25px 25px;
         border-radius: 15px;
     }
 }
