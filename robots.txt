@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: 
-
 Disallow: /trial.html
+
+sitemap: https://pomotodo.net/sitemap.xml
