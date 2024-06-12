@@ -3,3 +3,4 @@ Disallow:
 Disallow: /trial.html
 
 sitemap: https://pomotodo.net/sitemap.xml
+sitemap: https://pomotodo.net/blog/post-sitemap.xml
