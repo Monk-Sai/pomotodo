@@ -14,7 +14,7 @@ let pomodoroCount = 0;
 let remainingSeconds;
 
 // Pause timer function
-function pause() {
+async function pause() {
     clearInterval(timerInterval);
 
      // Store the remaining seconds
@@ -95,7 +95,7 @@ break2Click.addEventListener('click', () => {
 
 
 //start timer
-function start() {
+async function start() {
 
     //change button
     document.getElementById('start').style.display = "none";
@@ -186,7 +186,7 @@ function start() {
 
 
 // Function to detect the currently active element
-function detectActiveElement() {
+async function detectActiveElement() {
     if (workTitle.classList.contains('active')) {
         return "Work";
     } else if (breakTitle.classList.contains('active')) {
@@ -199,13 +199,13 @@ function detectActiveElement() {
 }
 
 // Function to reset the timer
-function resetTimer() {
+async function resetTimer() {
     clearInterval(timerInterval);
     remainingSeconds = undefined; // Reset remainingSeconds
   }
 
 // Playlist function
-function playlist() {
+async function playlist() {
     const iframe = document.getElementById("playlistFrame");
     iframe.src = "play-list.html";
     iframe.style.display = "flex"; // Show the iframe
@@ -237,7 +237,7 @@ function playlist() {
 }
 
 // To do list
-function openToDoList() {
+async function openToDoList() {
     const iframe = document.getElementById("todolistFrame");
     iframe.src = "to-do-list.html";
     iframe.style.display = "flex"; // Show the iframe
