@@ -457,7 +457,7 @@ display: block; /* Make the iframe visible */
         box-shadow: 0px 0px 20px 9px var(--color-shadow);
     }
     .timer-cal-container {
-        background-image: url("../img/pomo-wall-2.jpg");
+        background-image: url("../img/pomo-wall-2.webp");
         opacity: 1;
         background-size: cover;
         background-position: center;
