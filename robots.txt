@@ -2,5 +2,11 @@ User-agent: *
 Disallow: 
 Disallow: /trial.html
 
+Disallow: /blog/wp-admin/
+Allow: /blog/wp-admin/admin-ajax.php
+Disallow: /?s=
+Disallow: /page/*/?s=
+Disallow: /search/
+
 sitemap: https://pomotodo.net/sitemap.xml
 sitemap: https://pomotodo.net/blog/post-sitemap.xml
