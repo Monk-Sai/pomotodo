@@ -10,3 +10,4 @@ Disallow: /search/
 
 sitemap: https://pomotodo.net/sitemap.xml
 sitemap: https://pomotodo.net/blog/post-sitemap.xml
+Sitemap: https://pomotodo.net/blog/sitemap_index.xml
