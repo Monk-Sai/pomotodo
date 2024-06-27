@@ -165,15 +165,19 @@ h3 {
 
 .fold-0 {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
+    align-items: center;
     background-color: var(--color-font);
-    padding: 2.25rem 1rem 0 1rem;
+    padding: 2.25rem 0 0 0;
 }
 .fold-0 h1 {
     color: #510327;
     display: flex;
+    justify-content: center;
     width: 65%;
+    font-size: 2.25rem;
 }
 
 .time-container {
@@ -320,6 +324,21 @@ h3 {
     width: 100%;
     justify-content: center;
 }
+.CTA-buttons {
+    border: none;
+    justify-content: center;
+    color: #ff8d4f;
+    width: 30%;
+    height: 70px;
+    font-size: 1.2rem;
+    background-color: #240035;
+    cursor: pointer;
+    border-radius: 25px;
+    text-decoration: none;
+}
+.CTA-buttons button {
+    width: 100%;
+}
 
  /* Content Fold */
 .content-fold {
@@ -327,7 +346,7 @@ h3 {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 2rem 0 2rem 0;
+    margin: 3rem 0 3rem 0;
     padding: 0 1rem 0 1rem;
     align-items: center;
 }
@@ -413,6 +432,10 @@ h3 {
 display: block; /* Make the iframe visible */
 }
 
+.Recommened-posts {
+    display: flex;
+}
+
 /* Mobile Display Screen */
 @media screen and (max-width: 600px) {
     h1 {
@@ -482,5 +505,18 @@ display: block; /* Make the iframe visible */
             justify-content: space-around;
             flex-direction: column;
             align-items: center;
+    }
+    .CTA-buttons {
+        border: none;
+        justify-content: center;
+        color: #ff8d4f;
+        text-decoration: none;
+        width: 70%;
+        height: 65px;
+        font-size: 1.125rem;
+        background-color: #240035;
+        cursor: pointer;
+        border-radius: 25px;
+        padding: 0 6px;
     }
 }

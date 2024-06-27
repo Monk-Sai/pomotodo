@@ -1,6 +1,7 @@
 User-agent: *
 Disallow: 
-Disallow: /trial.html
+Disallow: /trial
+Disallow: /to-do-list-app
 
 Disallow: /blog/wp-admin/
 Allow: /blog/wp-admin/admin-ajax.php

@@ -207,7 +207,7 @@ async function resetTimer() {
 // Playlist function
 async function playlist() {
     const iframe = document.getElementById("playlistFrame");
-    iframe.src = "play-list.html";
+    iframe.src = "widgets/play-list.html";
     iframe.style.display = "flex"; // Show the iframe
 
     // Create a close button
@@ -239,7 +239,7 @@ async function playlist() {
 // To do list
 async function openToDoList() {
     const iframe = document.getElementById("todolistFrame");
-    iframe.src = "to-do-list.html";
+    iframe.src = "widgets/to-do-list.html";
     iframe.style.display = "flex"; // Show the iframe
 
     // Create a close button
