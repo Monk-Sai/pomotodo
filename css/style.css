@@ -146,6 +146,7 @@ ol,
 li {
     font-size: 1rem;
     width: 65%;
+    line-height: 25px;
 }
 i {
     font-size: 3rem;
@@ -275,6 +276,7 @@ h3 {
     justify-content: center;
     flex-direction: row;
     width: 100%;
+    align-items: center;
 }
 .start-pause-control {
     height: 75%;
@@ -307,6 +309,12 @@ h3 {
     background-color: transparent;
     cursor: pointer;
 }
+.controls #start {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: #fefefe;
+}
 .controls #reset {
     display: flex;
     width: 100%;
@@ -338,6 +346,7 @@ h3 {
 }
 .CTA-buttons button {
     width: 100%;
+    font-weight: 800;
 }
 
  /* Content Fold */
@@ -459,6 +468,7 @@ display: block; /* Make the iframe visible */
     li {
         font-size: 1rem;
         width: 100%;
+        line-height: 25px;
     }
     .time-container {
         width: min(42.5rem, 100%);

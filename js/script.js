@@ -97,6 +97,12 @@ break2Click.addEventListener('click', () => {
 //start timer
 async function start() {
 
+    // Track button click event with Google Analytics
+    gtag('event', 'click', {
+        'event_category': 'Button',
+        'event_label': 'Start Time'
+    });
+
     //change button
     document.getElementById('start').style.display = "none";
     document.getElementById('pause').style.display = "flex";
