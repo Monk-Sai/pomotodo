@@ -32,6 +32,22 @@
     <!-- Schemas -->
     <script type="application/ld+json">
         {
+          "@context" : "https://schema.org",
+          "@type" : "WebSite",
+          "name" : "PomoTodo",
+          "url" : "https://pomotodo.net/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://pomotodo.net/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "The Pomodoro Timer to Complete Your Tasks with Focus",
