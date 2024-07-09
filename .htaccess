@@ -2,6 +2,9 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.pomotodo\.net [NC]
 RewriteRule ^(.*)$ https://pomotodo.net/$1 [L,R=301]
 
+# Redirect index.html to root
+RewriteRule ^index\.html$ / [R=301,L]
+
 <IfModule mod_headers.c>
     # Set caching headers for static files
     <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp)$">
