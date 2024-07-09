@@ -5,6 +5,11 @@ RewriteRule ^(.*)$ https://pomotodo.net/$1 [L,R=301]
 # Redirect index.html to root
 RewriteRule ^index\.html$ / [R=301,L]
 
+# Remove .html extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
 <IfModule mod_headers.c>
     # Set caching headers for static files
     <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp)$">

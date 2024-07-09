@@ -445,6 +445,47 @@ display: block; /* Make the iframe visible */
     display: flex;
 }
 
+.FAQ-Fold {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5%;
+    margin: 10px 10%;
+    align-items: center;
+    width: 80%;
+    border: 1px solid #48024a;
+    border-radius: 16px;
+}
+.FAQ-fold-head {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0;
+    text-align: center;
+}
+.FAQ-fold-head h2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.FAQ-questions{
+    width: 100%;
+    border-top: 1px solid #d56dd6;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.FAQ-answers{
+    width: 100%;
+    display: flex;
+    padding: 0 0 20px 0;
+}
+.FAQ-answers p{
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+}
+
 /* Mobile Display Screen */
 @media screen and (max-width: 600px) {
     h1 {
