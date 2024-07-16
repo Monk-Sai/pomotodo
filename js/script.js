@@ -17,7 +17,7 @@ let remainingSeconds;
 async function pause() {
     clearInterval(timerInterval);
 
-     // Store the remaining seconds
+    // Store the remaining seconds
     remainingSeconds = seconds;
 
     document.getElementById('start').style.display = "none";
@@ -41,12 +41,12 @@ window.onload = () => {
 }
 
 // Handle clicks on specific elements to switch between sessions
-const workClick = document.getElementById('work'); 
-const breakClick = document.getElementById('break'); 
-const break2Click = document.getElementById('break2'); 
+const workClick = document.getElementById('work');
+const breakClick = document.getElementById('break');
+const break2Click = document.getElementById('break2');
 
 workClick.addEventListener('click', () => {
-    
+
     document.getElementById('minutes').innerHTML = workTime;
     document.getElementById('seconds').innerHTML = "00";
 
@@ -62,7 +62,7 @@ workClick.addEventListener('click', () => {
 });
 
 breakClick.addEventListener('click', () => {
-    
+
     document.getElementById('minutes').innerHTML = breakTime;
     document.getElementById('seconds').innerHTML = "00";
 
@@ -78,7 +78,7 @@ breakClick.addEventListener('click', () => {
 });
 
 break2Click.addEventListener('click', () => {
-    
+
     document.getElementById('minutes').innerHTML = breakTime2;
     document.getElementById('seconds').innerHTML = "00";
 
@@ -133,16 +133,16 @@ async function start() {
         //start
         seconds = seconds - 1;
 
-        if(seconds === 0) {
+        if (seconds === 0) {
             workMinutes = workMinutes - 1;
-            if(workMinutes === -1){
+            if (workMinutes === -1) {
                 // Check for changes in the active element
                 if (newActiveElement !== null) {
                     // Play sound and show alert when changing from one session to another
                     alarmSound.play();
                     alert(`Switching to ${newActiveElement} Session`);
                 }
-                if(pomodoroCount === 0) {
+                if (pomodoroCount === 0) {
                     // start a 5-minute break after the first Pomodoro
                     workMinutes = breakMinutes;
                     pomodoroCount++;
@@ -152,9 +152,9 @@ async function start() {
                     breakTitle.classList.add('active');
                     breakTitleTwo.classList.remove('active');
 
-                }else if (pomodoroCount === 1) {
+                } else if (pomodoroCount === 1) {
                     // start a 25-minute work after the first Break
-                    workMinutes = 25; 
+                    workMinutes = 25;
                     pomodoroCount++;
 
                     // change panel
@@ -162,7 +162,7 @@ async function start() {
                     breakTitle.classList.remove('active');
                     breakTitleTwo.classList.remove('active');
 
-                }else if (pomodoroCount === 2) {
+                } else if (pomodoroCount === 2) {
                     // start a 10-minute break after the second Pomodoro
                     workMinutes = 10;
                     pomodoroCount++;
@@ -183,7 +183,7 @@ async function start() {
                     breakTitleTwo.classList.remove('active');
                 }
             }
-        seconds = 59;
+            seconds = 59;
         }
     }
     // start Countdown
@@ -208,7 +208,28 @@ async function detectActiveElement() {
 async function resetTimer() {
     clearInterval(timerInterval);
     remainingSeconds = undefined; // Reset remainingSeconds
-  }
+}
+
+// Reset Function
+document.getElementById('reset').addEventListener('click', resetTimeNo);
+function resetTimeNo() {
+    clearInterval(timerInterval);
+    let minutes;
+
+    if (workTitle.classList.contains('active')) {
+        minutes = workTime;
+    } else if (breakTitle.classList.contains('active')) {
+        minutes = breakTime;
+    } else if (breakTitleTwo.classList.contains('active')) {
+        minutes = breakTime2;
+    }
+
+    document.getElementById('minutes').innerHTML = minutes;
+    document.getElementById('seconds').innerHTML = "00";
+    document.getElementById('start').style.display = "flex";
+    document.getElementById('pause').style.display = "none";
+}
+
 
 // Playlist function
 async function playlist() {
@@ -275,10 +296,10 @@ async function openToDoList() {
 }
 
 // Function idems div below
-    var section = document.getElementById('frameLoadSection');
-    var iframe = document.getElementById('todolistFrame');
-    section.appendChild(iframe);
+var section = document.getElementById('frameLoadSection');
+var iframe = document.getElementById('todolistFrame');
+section.appendChild(iframe);
 
-    var section = document.getElementById('frameLoadSection');
-    var iframe = document.getElementById('playlistFrame');
-    section.appendChild(iframe);
+var section = document.getElementById('frameLoadSection');
+var iframe = document.getElementById('playlistFrame');
+section.appendChild(iframe);
