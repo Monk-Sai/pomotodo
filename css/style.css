@@ -2,7 +2,7 @@
     font-size: 1rem;
 
     --color-primary: #510327;
-    --color-secondary: #fff000;
+    --color-secondary: #ff31f5;
     --color-font: #fefefe;
     --color-shadow: #ffffff;
 }
@@ -28,19 +28,20 @@
 .times-header p{
     color: rgb(255, 255, 255);
     padding: 10px;
+    font-weight: 500;
 }
 
 .header-col-1 {
     display: flex;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 500;
     align-items: center;
     text-decoration: none;
 }
 .header-col-1 p {
     display: flex;
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 500;
     align-items: center;
     text-decoration: none; 
 }
@@ -93,7 +94,7 @@
 }
 .footer-col-1 p{
     color: #fff;
-    font-weight: 900;
+    font-weight: 500;
     font-size: 2rem;
 }
 .footer-col-2{
@@ -124,7 +125,7 @@
 body {
     height: 100%;
     font-size: 1.6rem;
-    font-family: 'open sans', sans-serif;
+    font-family: 'poppins', sans-serif;
 }
 
 p,
@@ -147,16 +148,24 @@ li {
     font-size: 1rem;
     width: 80%;
     line-height: 25px;
+    line-height: normal;
+}
+a {
+    text-decoration: none;
+    color: #b628f7;
+    font-weight: 500;
 }
 i {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 h1 {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
+    font-weight: 500;
 }
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     width: 80%;
+    font-weight: 500;
 }
 h3 {
     font-size: 1.25rem;
@@ -210,7 +219,7 @@ h3 {
 .panel p {
     opacity: 0.8;
     transition: 0.45s ease-in;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     color: #fefefe;
     font-size: 1.3rem;
@@ -260,8 +269,8 @@ h3 {
 }
 .time p {
     font-size: 4.5rem;
-    font-weight: 600;
-    font-family: monospace;
+    font-weight: 700;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: black;
     text-shadow: 5px 3px 2px #bb2aff;;
 }
@@ -346,7 +355,7 @@ h3 {
 }
 .CTA-buttons button {
     width: 100%;
-    font-weight: 800;
+    font-weight: 500;
 }
 
  /* Content Fold */
@@ -489,7 +498,7 @@ display: block; /* Make the iframe visible */
 /* Page Banner CTAs */
 
 .Ch-ext-div {
-    width: 75%;
+    width: 85%;
     padding: 30px 0;
     margin: 75px 0;
     display: flex;
@@ -534,7 +543,7 @@ display: block; /* Make the iframe visible */
 }
 .Ch-ext-cta button{
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     color: #fff;
     text-shadow: 1px 1px rgb(0, 0, 0);
     width: 100%;
@@ -686,7 +695,7 @@ display: block; /* Make the iframe visible */
     }
     .Ch-ext-cta button{
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 500;
         color: #fff;
         text-shadow: 1px 1px rgb(0, 0, 0);
         width: 100%;

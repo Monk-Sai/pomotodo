@@ -28,7 +28,7 @@ async function pause() {
 }
 
 // Audio element for the alarm
-let alarmSound = new Audio('../sounds/alarm-tone-1.mp3');
+let alarmSound = new Audio('../sounds/alarm_tone_1.mp3');
 
 //Display
 window.onload = () => {
