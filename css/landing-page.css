@@ -7,7 +7,7 @@
     background-color: rgb(35, 0, 73);
 }
 .Lp-fold1 h1{
-    text-align: center;
+    text-align: left;
     color: #fff;
 }
 .Lp-fold1 p{
@@ -133,6 +133,15 @@
         flex-direction: column;
         justify-content: space-evenly;
     }
+    .Lp-fold1 h1{
+        text-align: center;
+        color: #fff;
+    }
+    .Lp-fold1 p{
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+    }
     .Lp-text-f1{
         width: 100%;
     }
@@ -173,5 +182,10 @@
         background-color: rgb(255, 224, 209);
         color: #000000;
         padding: 0;
+    }
+    .button-div-class{
+        display: flex;
+        justify-content: center;
+        margin-top: 0;
     }
 }
