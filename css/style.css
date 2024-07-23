@@ -100,10 +100,10 @@
 .footer-col-2{
     color: #fefefe;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    width: 45%;
-    align-items: center;
+    width: 80%;
+    align-items: flex-start;
 }
 .footer-col-2 p {
     font-size: 18px;
@@ -113,6 +113,7 @@
     text-decoration: none;
     font-size: 18px;
     color: #fff;
+    padding: 10px;
 }
 
 .timer-cal-container {
