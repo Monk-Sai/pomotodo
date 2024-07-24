@@ -32,6 +32,8 @@ let alarmSound = new Audio('../sounds/alarm_tone_1.mp3');
 
 //Display
 window.onload = () => {
+    loadTimerState();
+
     document.getElementById('minutes').innerHTML = workTime;
     document.getElementById('seconds').innerHTML = seconds;
 
@@ -182,9 +184,12 @@ async function start() {
                     workTitle.classList.add('active');
                     breakTitleTwo.classList.remove('active');
                 }
+                saveTimerState(); // Save the state after switching sessions
+                return;
             }
             seconds = 59;
         }
+        saveTimerState(); // Save the state periodically
     }
     // start Countdown
     timerInterval = setInterval(timerFunction, 1000);
@@ -303,3 +308,65 @@ section.appendChild(iframe);
 var section = document.getElementById('frameLoadSection');
 var iframe = document.getElementById('playlistFrame');
 section.appendChild(iframe);
+
+
+// run the timer even in background //
+function saveTimerState() {
+    localStorage.setItem('timerState', JSON.stringify({
+        workMinutes: document.getElementById('minutes').innerText,
+        seconds: document.getElementById('seconds').innerText,
+        pomodoroCount: pomodoroCount,
+        activeElement: detectActiveElement(),
+        isRunning: (document.getElementById('pause').style.display === "flex"),
+        timestamp: Date.now() // Save the current timestamp
+    }));
+}
+
+function loadTimerState() {
+    let savedState = localStorage.getItem('timerState');
+    if (savedState) {
+        savedState = JSON.parse(savedState);
+        const elapsedTime = (Date.now() - savedState.timestamp) / 1000; // Calculate elapsed time in seconds
+
+        let workMinutes = parseInt(savedState.workMinutes);
+        let seconds = parseInt(savedState.seconds);
+
+        // Update minutes and seconds based on elapsed time
+        const totalSeconds = workMinutes * 60 + seconds - elapsedTime;
+        workMinutes = Math.floor(totalSeconds / 60);
+        seconds = Math.floor(totalSeconds % 60);
+
+        if (totalSeconds <= 0) {
+            // Handle case where time has elapsed
+            workMinutes = 0;
+            seconds = 0;
+            // Optionally, you can trigger the next session or alert the user
+        }
+
+        document.getElementById('minutes').innerText = workMinutes;
+        document.getElementById('seconds').innerText = seconds;
+        pomodoroCount = savedState.pomodoroCount;
+
+        if (savedState.activeElement === "Work") {
+            workTitle.classList.add('active');
+            breakTitle.classList.remove('active');
+            breakTitleTwo.classList.remove('active');
+        } else if (savedState.activeElement === "Break") {
+            workTitle.classList.remove('active');
+            breakTitle.classList.add('active');
+            breakTitleTwo.classList.remove('active');
+        } else if (savedState.activeElement === "Break2") {
+            workTitle.classList.remove('active');
+            breakTitle.classList.remove('active');
+            breakTitleTwo.classList.add('active');
+        }
+
+        if (savedState.isRunning) {
+            start();
+        }
+    }
+}
+
+window.addEventListener('beforeunload', saveTimerState);
+window.addEventListener('unload', saveTimerState);
+
