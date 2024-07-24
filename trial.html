@@ -281,7 +281,7 @@ async function start() {
     document.getElementById('pause').style.display = "flex";
 
     // Use the stored remaining seconds or set it to 59 if not set
-    seconds = remainingSeconds || 2; // Use remainingSeconds if set, otherwise default to 59
+    seconds = remainingSeconds || 59; // Use remainingSeconds if set, otherwise default to 59
 
     let workMinutes = workTime - 1;
     let breakMinutes = breakTime - 1;
@@ -356,7 +356,7 @@ async function start() {
                     breakTitleTwo.classList.remove('active');
                 }
             }
-        seconds = 2;
+        seconds = 59;
         }
     }
     // start Countdown

@@ -14,7 +14,7 @@ let pomodoroCount = 0;
 let remainingSeconds;
 
 // Pause timer function
-async function pause() {
+/* async function pause() {
     clearInterval(timerInterval);
 
     // Store the remaining seconds
@@ -25,15 +25,13 @@ async function pause() {
 
     document.getElementById('start').style.display = "flex";
     document.getElementById('pause').style.display = "none";
-}
+} */
 
 // Audio element for the alarm
 let alarmSound = new Audio('../sounds/alarm_tone_1.mp3');
 
 //Display
 window.onload = () => {
-    loadTimerState();
-
     document.getElementById('minutes').innerHTML = workTime;
     document.getElementById('seconds').innerHTML = seconds;
 
@@ -184,13 +182,10 @@ async function start() {
                     workTitle.classList.add('active');
                     breakTitleTwo.classList.remove('active');
                 }
-                saveTimerState(); // Save the state after switching sessions
-                return;
             }
             seconds = 59;
         }
-        saveTimerState(); // Save the state periodically
-    }
+    };
     // start Countdown
     timerInterval = setInterval(timerFunction, 1000);
 }
@@ -309,64 +304,144 @@ var section = document.getElementById('frameLoadSection');
 var iframe = document.getElementById('playlistFrame');
 section.appendChild(iframe);
 
+// Function to keep it running in the background
+let timerInterval;
+let startTime;
+let remainingTime;
+let isRunning = false;
 
-// run the timer even in background //
-function saveTimerState() {
-    localStorage.setItem('timerState', JSON.stringify({
-        workMinutes: document.getElementById('minutes').innerText,
-        seconds: document.getElementById('seconds').innerText,
-        pomodoroCount: pomodoroCount,
-        activeElement: detectActiveElement(),
-        isRunning: (document.getElementById('pause').style.display === "flex"),
-        timestamp: Date.now() // Save the current timestamp
-    }));
+// Pause timer function
+function pause() {
+    clearInterval(timerInterval);
+    isRunning = false;
+
+    // Get remaining seconds from displayed minutes and seconds
+    let remainingMinutes = parseInt(document.getElementById('minutes').innerHTML);
+    let remainingSeconds = parseInt(document.getElementById('seconds').innerHTML);
+
+    remainingSeconds = seconds;
+
+    document.getElementById('start').style.display = "flex";
+    document.getElementById('pause').style.display = "none";
 }
 
-function loadTimerState() {
-    let savedState = localStorage.getItem('timerState');
-    if (savedState) {
-        savedState = JSON.parse(savedState);
-        const elapsedTime = (Date.now() - savedState.timestamp) / 1000; // Calculate elapsed time in seconds
 
-        let workMinutes = parseInt(savedState.workMinutes);
-        let seconds = parseInt(savedState.seconds);
+// Display
+window.onload = () => {
+    document.getElementById('minutes').innerHTML = workTime;
+    document.getElementById('seconds').innerHTML = seconds;
 
-        // Update minutes and seconds based on elapsed time
-        const totalSeconds = workMinutes * 60 + seconds - elapsedTime;
-        workMinutes = Math.floor(totalSeconds / 60);
-        seconds = Math.floor(totalSeconds % 60);
+    workTitle.classList.add('active');
+    breakTitle.classList.remove('active');
+    breakTitleTwo.classList.remove('active');
+}
 
-        if (totalSeconds <= 0) {
-            // Handle case where time has elapsed
-            workMinutes = 0;
-            seconds = 0;
-            // Optionally, you can trigger the next session or alert the user
-        }
 
-        document.getElementById('minutes').innerText = workMinutes;
-        document.getElementById('seconds').innerText = seconds;
-        pomodoroCount = savedState.pomodoroCount;
+workClick.addEventListener('click', () => {
+    setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
+});
 
-        if (savedState.activeElement === "Work") {
-            workTitle.classList.add('active');
-            breakTitle.classList.remove('active');
-            breakTitleTwo.classList.remove('active');
-        } else if (savedState.activeElement === "Break") {
-            workTitle.classList.remove('active');
-            breakTitle.classList.add('active');
-            breakTitleTwo.classList.remove('active');
-        } else if (savedState.activeElement === "Break2") {
-            workTitle.classList.remove('active');
-            breakTitle.classList.remove('active');
-            breakTitleTwo.classList.add('active');
-        }
+breakClick.addEventListener('click', () => {
+    setSession(breakTime, breakTitle, [workTitle, breakTitleTwo]);
+});
 
-        if (savedState.isRunning) {
-            start();
-        }
+break2Click.addEventListener('click', () => {
+    setSession(breakTime2, breakTitleTwo, [workTitle, breakTitle]);
+});
+
+function setSession(time, activeTitle, inactiveTitles) {
+    document.getElementById('minutes').innerHTML = time;
+    document.getElementById('seconds').innerHTML = "00";
+
+    activeTitle.classList.add('active');
+    inactiveTitles.forEach(title => title.classList.remove('active'));
+
+    resetTimer();
+    pause();
+}
+
+// Start timer
+function start() {
+    if (!isRunning) {
+        isRunning = true;
+        startTime = Date.now();
+        remainingTime = getRemainingTime();
+        runTimer();
+    }
+
+    seconds = remainingSeconds || 59 || getRemainingTime();
+
+    document.getElementById('start').style.display = "none";
+    document.getElementById('pause').style.display = "flex";
+}
+
+function runTimer() {
+    if (!isRunning) return;
+
+    let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+    let timeLeft = remainingTime - elapsedTime;
+
+    if (timeLeft <= 0) {
+        handleSessionSwitch();
+        return;
+    }
+
+    updateDisplay(timeLeft);
+    requestAnimationFrame(runTimer);
+}
+
+function updateDisplay(time) {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    document.getElementById('minutes').innerHTML = minutes;
+    document.getElementById('seconds').innerHTML = seconds < 10 ? '0' + seconds : seconds;
+}
+
+function handleSessionSwitch() {
+    clearInterval(timerInterval);
+    isRunning = false;
+    alarmSound.play();
+
+    if (workTitle.classList.contains('active')) {
+        setSession(breakTime, breakTitle, [workTitle, breakTitleTwo]);
+    } else if (breakTitle.classList.contains('active')) {
+        setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
+    } else if (breakTitleTwo.classList.contains('active')) {
+        setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
     }
 }
 
-window.addEventListener('beforeunload', saveTimerState);
-window.addEventListener('unload', saveTimerState);
+function getRemainingTime() {
+    if (workTitle.classList.contains('active')) {
+        return workTime * 60;
+    } else if (breakTitle.classList.contains('active')) {
+        return breakTime * 60;
+    } else if (breakTitleTwo.classList.contains('active')) {
+        return breakTime2 * 60;
+    }
+}
 
+function resetTimer() {
+    clearInterval(timerInterval);
+    remainingTime = getRemainingTime();
+}
+
+// Reset Function
+document.getElementById('reset').addEventListener('click', resetTimeNo);
+
+function resetTimeNo() {
+    resetTimer();
+    pause();
+
+    if (workTitle.classList.contains('active')) {
+        updateDisplay(workTime * 60);
+    } else if (breakTitle.classList.contains('active')) {
+        updateDisplay(breakTime * 60);
+    } else if (breakTitleTwo.classList.contains('active')) {
+        updateDisplay(breakTime2 * 60);
+    }
+
+    document.getElementById('start').style.display = "flex";
+    document.getElementById('pause').style.display = "none";
+}
