@@ -45,41 +45,34 @@
           }
         }
     </script>
+    
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "The Pomodoro Timer to Complete Your Tasks with Focus",
             "description": "Conquer Your Distractions and Boost Productivity with the Pomodoro Technique",
-            "mainEntityOfPage": {
-                "@type": "Article",
-                "headline": "Conquer Your Distractions and Boost Productivity with the Pomodoro Technique",
-              	"author": "Saiprasad Acharya",
-              	"url": "https://pomotodo.net/blog/author/saiacharya/",
-              	"image": "https://pomotodo.net/img/pomotodo-logo.png",
-                "description": "The Pomodoro Technique is a time management method that involves working in focused 25-minute intervals ('Pomodoros') separated by short breaks. Developed by Francesco Cirillo in the late 1980s, this technique has gained widespread popularity due to its simplicity and effectiveness in improving focus, reducing procrastination, and increasing overall productivity."
+            "mainEntity": {
+                "@type": "WebApplication",
+                "name": "PomoTodo",
+                "description": "The Pomodoro Timer helps you manage your time using the Pomodoro Technique, with focused 25-minute intervals followed by short breaks to boost productivity.",
+                "applicationCategory": "Productivity",
+                "operatingSystem": "Web",
+                "url": "https://pomotodo.net",
+                "image": "https://pomotodo.net/img/pomotodo-logo.png",
+                "author": {
+                    "@type": "Person",
+                    "name": "Saiprasad Acharya"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0.00",
+                    "priceCurrency": "USD"
+                }
             }
         }
-    </script>
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "@id": "https://pomotodo.net",
-          "name": "PomoTodo",
-          "description": "A web-based Pomodoro timer application to boost your productivity and focus",
-          "url": "https://pomotodo.net",
-          "operatingSystem": "Web",
-          "applicationCategory": "Productivity"
-          },
-          "potentialAction": {
-            "@type": "Action",
-            "name": "Pomodoro Timer",
-            "target": {
-              "@type": "EntryPoint",
-              "url": "https://pomotodo.net"  }
-          }
-    </script>
+        </script>
+        
 
 </head>
 
