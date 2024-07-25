@@ -596,10 +596,9 @@ display: block; /* Make the iframe visible */
         justify-content: center;
         align-items: center;
         width: 18rem;
-        height: 12rem;
+        height: 11rem;
         border-radius: 25% 0;
-        -webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow);
-        box-shadow: 0px 0px 20px 9px var(--color-shadow);
+        box-shadow: 0px 0px 5px 2px #240035;
     }
     .timer-cal-container {
         background-image: url("../img/pomo-wall-2.webp");
@@ -612,9 +611,9 @@ display: block; /* Make the iframe visible */
         justify-content: center;
         align-items: center;
         width: 17rem;
-        height: 11rem;
+        height: 10rem;
         border-radius: 25% 0;
-        background-color: rgba(255, 255, 255, 0.45);
+        background-color: rgba(37, 5, 62, 0.566);
         position: relative;
     }
     .footer-main {
