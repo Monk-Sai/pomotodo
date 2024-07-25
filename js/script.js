@@ -11,10 +11,11 @@ let breakTime2 = 10;
 let seconds = "00";
 let pomodoroCount = 0;
 
+let remainingMinutes;
 let remainingSeconds;
 
 // Pause timer function
-/* async function pause() {
+async function pause() {
     clearInterval(timerInterval);
 
     // Store the remaining seconds
@@ -25,7 +26,7 @@ let remainingSeconds;
 
     document.getElementById('start').style.display = "flex";
     document.getElementById('pause').style.display = "none";
-} */
+}
 
 // Audio element for the alarm
 let alarmSound = new Audio('../sounds/alarm_tone_1.mp3');
@@ -319,7 +320,7 @@ function pause() {
     let remainingMinutes = parseInt(document.getElementById('minutes').innerHTML);
     let remainingSeconds = parseInt(document.getElementById('seconds').innerHTML);
 
-    remainingSeconds = seconds;
+    remainingTime = remainingMinutes * 60 + remainingSeconds;
 
     document.getElementById('start').style.display = "flex";
     document.getElementById('pause').style.display = "none";
@@ -365,11 +366,11 @@ function start() {
     if (!isRunning) {
         isRunning = true;
         startTime = Date.now();
-        remainingTime = getRemainingTime();
+
+        // Use the stored remaining time or the initial session time
+        remainingTime = remainingTime !== undefined ? remainingTime : getRemainingTime();
         runTimer();
     }
-
-    seconds = remainingSeconds || 59 || getRemainingTime();
 
     document.getElementById('start').style.display = "none";
     document.getElementById('pause').style.display = "flex";
@@ -425,6 +426,7 @@ function getRemainingTime() {
 function resetTimer() {
     clearInterval(timerInterval);
     remainingTime = getRemainingTime();
+    isRunning = false;
 }
 
 // Reset Function
