@@ -447,3 +447,42 @@ function resetTimeNo() {
     document.getElementById('start').style.display = "flex";
     document.getElementById('pause').style.display = "none";
 }
+
+if (Notification.permission !== 'granted') {
+    Notification.requestPermission();
+}
+
+function showNotification(title, body) {
+    if (Notification.permission === 'granted') {
+        let notification = new Notification(title, { body });
+        notification.onclick = function() {
+            handleNotificationClick();
+            notification.close();
+        };
+    } else {
+        alert(body);
+        handleNotificationClick();
+    }
+}
+
+function handleNotificationClick() {
+    alarmSound.pause();
+    alarmSound.currentTime = 0;
+    start(); // Start the next Pomodoro or timer
+}
+
+function handleSessionSwitch() {
+    clearInterval(timerInterval);
+    isRunning = false;
+    alarmSound.play();
+
+    showNotification('Pomodoro Timer', 'Time is up! Click to start the next session.');
+
+    if (workTitle.classList.contains('active')) {
+        setSession(breakTime, breakTitle, [workTitle, breakTitleTwo]);
+    } else if (breakTitle.classList.contains('active')) {
+        setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
+    } else if (breakTitleTwo.classList.contains('active')) {
+        setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
+    }
+}
