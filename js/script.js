@@ -472,13 +472,7 @@ function notifyUser() {
         alarmSound.currentTime = 0;
     }
 }
-function handleVisibilityChange() {
-    if (document.hidden) {
-        // Tab is hidden, optional: pause or handle differently
-    } else {
-        // Tab is visible, optional: resume or handle differently
-    }
-}
+
 
 if (Notification.permission !== 'granted') {
     Notification.requestPermission();
@@ -501,6 +495,18 @@ function handleNotificationClick() {
     alarmSound.pause();
     alarmSound.currentTime = 0;
     start(); // Start the next Pomodoro or timer
+    startNextSession(); // Start the next Pomodoro or timer
+}
+
+// Function to Start the Next Pomodoro or Timer
+function startNextSession() {
+    if (workTitle.classList.contains('active')) {
+        setSession(breakTime, breakTitle, [workTitle, breakTitleTwo]);
+    } else if (breakTitle.classList.contains('active')) {
+        setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
+    } else if (breakTitleTwo.classList.contains('active')) {
+        setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
+    }
 }
 
 function handleSessionSwitch() {
@@ -517,4 +523,10 @@ function handleSessionSwitch() {
     } else if (breakTitleTwo.classList.contains('active')) {
         setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
     }
+}
+
+// Function to Play Alarm Sound
+function playAlarmSound() {
+    alarmSound.loop = true; // Ensure it keeps playing
+    alarmSound.play();
 }
