@@ -4,7 +4,7 @@ let breakTitle = document.getElementById('break');
 let breakTitleTwo = document.getElementById('break2');
 
 
-let workTime = 25;
+let workTime = 1;
 let breakTime = 5;
 let breakTime2 = 10;
 
@@ -403,6 +403,7 @@ function handleSessionSwitch() {
     clearInterval(timerInterval);
     isRunning = false;
     alarmSound.play();
+    notifyUser();
 
     if (workTitle.classList.contains('active')) {
         setSession(breakTime, breakTitle, [workTitle, breakTitleTwo]);
@@ -446,6 +447,37 @@ function resetTimeNo() {
 
     document.getElementById('start').style.display = "flex";
     document.getElementById('pause').style.display = "none";
+}
+
+// Notifications //
+
+function notifyUser() {
+    // Request permission for notifications
+    if (Notification.permission === "default") {
+        Notification.requestPermission();
+    }
+
+    if (Notification.permission === "granted") {
+        new Notification("Pomodoro Timer", {
+            body: "Time is up!",
+            icon: "../images/timer_icon.png"
+        }).onclick = function () {
+            window.focus();
+            alarmSound.pause();
+            alarmSound.currentTime = 0;
+        };
+    } else {
+        alert('Time is up! Click OK to stop the alarm.');
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
+    }
+}
+function handleVisibilityChange() {
+    if (document.hidden) {
+        // Tab is hidden, optional: pause or handle differently
+    } else {
+        // Tab is visible, optional: resume or handle differently
+    }
 }
 
 if (Notification.permission !== 'granted') {
