@@ -494,7 +494,6 @@ function showNotification(title, body) {
 function handleNotificationClick() {
     alarmSound.pause();
     alarmSound.currentTime = 0;
-    start(); // Start the next Pomodoro or timer
     startNextSession(); // Start the next Pomodoro or timer
 }
 
@@ -507,6 +506,12 @@ function startNextSession() {
     } else if (breakTitleTwo.classList.contains('active')) {
         setSession(workTime, workTitle, [breakTitle, breakTitleTwo]);
     }
+}
+
+// Function to Play Alarm Sound
+function playAlarmSound() {
+    alarmSound.loop = true; // Ensure it keeps playing
+    alarmSound.play();
 }
 
 function handleSessionSwitch() {
@@ -525,8 +530,4 @@ function handleSessionSwitch() {
     }
 }
 
-// Function to Play Alarm Sound
-function playAlarmSound() {
-    alarmSound.loop = true; // Ensure it keeps playing
-    alarmSound.play();
-}
+
