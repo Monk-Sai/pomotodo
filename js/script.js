@@ -5,7 +5,7 @@ let breakTitle = document.getElementById('break');
 let breakTitleTwo = document.getElementById('break2');
 
 
-let workTime = 1;
+let workTime = 25;
 let breakTime = 5;
 let breakTime2 = 10;
 
